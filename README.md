@@ -1,7 +1,5 @@
 # RAD-Seq genotyping of guar (*C. tetragonoloba*)
 
-![All quantile-quantile plots](./qq.jpg)
-
 Repository containing data and code for the guar (*Cyamopsis tetragonoloba* (L.) Taub.) genotyping and GWAS project. A brief description of the repository contents:
 
 `make_consensus_vcf.py` script was used to generate the final variant dataset using raw GATK-HC, NGSEP and TASSEL 5 variant calls, `make_snp_stats.py` script was used with the same inputs to explore the quality statistics of the variant calls.
@@ -11,6 +9,8 @@ Repository containing data and code for the guar (*Cyamopsis tetragonoloba* (L.)
 `genetic_analysis.ipynb` notebook was used to perform most of the genetic analyses, including PCA, linkage disequilibrium analysis, and generalized linear model-based association analysis.
 
 `prepare_farmcpu.py` script was used to format input data for FarmCPU tool (Q-Q plot of the resulting p-values is shown in the paper and below).
+
+![All quantile-quantile plots](./qq.jpg)
 
 `admix_file_create.py` file was used to preprocess genotypes for ADMIXTURE analysis (part of this was done using Hail in the `genetic_analysis.ipynb`).
 
