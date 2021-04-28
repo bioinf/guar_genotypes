@@ -1,4 +1,4 @@
-# Reference genotyping dataset for guar (*C. tetragonoloba*)
+# RAD-Seq genotyping of guar (*C. tetragonoloba*)
 
 ![All quantile-quantile plots](./qq.jpg)
 
