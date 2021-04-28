@@ -1,8 +1,8 @@
 # Reference genotyping dataset for guar (*C. tetragonoloba*)
 
-Repository containing data and code for the guar (*Cyamopsis tetragonoloba* (L.) Taub.) genotyping and GWAS project. A brief description of the repository contents:
-
 ![All quantile-quantile plots](./qq.jpg)
+
+Repository containing data and code for the guar (*Cyamopsis tetragonoloba* (L.) Taub.) genotyping and GWAS project. A brief description of the repository contents:
 
 `make_consensus_vcf.py` script was used to generate the final variant dataset using raw GATK-HC, NGSEP and TASSEL 5 variant calls, `make_snp_stats.py` script was used with the same inputs to explore the quality statistics of the variant calls.
 
