@@ -11,6 +11,7 @@ library(VennDiagram)
 library(CMplot)
 library(FarmCPUpp)
 require(bigmemory)
+library(lattice)
 
 mycol1 = rgb(110, 224, 255, maxColorValue = 255)
 mycol2 = rgb(255, 192, 78, maxColorValue = 255)
@@ -349,3 +350,24 @@ CMplot(gwas_fc_tab, plot.type="m",multracks=TRUE,
 hits = gwas_fc_tab[gwas_fc_tab$maturation_pct < 1e-4, ]
 
 write.table(hits, file='bean_maturation_hits.tsv', sep='\t', row.names=F, quote=F)
+
+myY_tocorr <- read.table('/media/array/guar_proj//gwas_farmcpu/FarmCPU_Y_revamp.tsv',
+                  header = TRUE, stringsAsFactors = FALSE)
+dim(myY_tocorr)
+
+corr_matrix <- cor(as.matrix(myY_tocorr[, 2:8]), use = "pairwise.complete.obs")
+image(corr_matrix)
+
+drawCorrHM = function(df, p_df){
+  myPanel_a <- function(x, y, z, ...) {
+    panel.levelplot(x,y,z,...)
+    panel.text(x, y,  p_df[cbind(x,y)]) ## use handy matrix indexing
+  }
+  return(levelplot(df, col.regions=jet, 
+                   at=seq(-1, 1, length.out=100), 
+                   aspect='fill', colorkey=list(width=3, labels=list(cex=1.0)),
+                   scales=list(x=list(rot=45)), xlab=list(label=''), 
+                   ylab=list(label=''), panel=myPanel_a))
+}
+jet = colorspace::diverge_hsv(100)
+drawCorrHM(corr_matrix, round(corr_matrix, digits=3))
